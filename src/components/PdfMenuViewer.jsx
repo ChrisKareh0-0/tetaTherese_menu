@@ -20,11 +20,16 @@ const PdfMenuViewer = ({ onBack }) => {
             </button>
 
             {/* PDF Container */}
-            <div className="flex-1 w-full h-full relative bg-white/5">
+            <div className="flex-1 w-full h-full relative bg-white/5 overflow-y-auto -webkit-overflow-scrolling-touch">
                 <iframe
-                    src="/menu.pdf#toolbar=0&navpanes=0&scrollbar=0"
-                    className="w-full h-full border-none"
+                    src="/menu.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+                    className="w-full h-full border-none min-h-full"
                     title="Menu PDF"
+                    style={{
+                        minWidth: '100%',
+                        width: '100%',
+                        height: '100%'
+                    }}
                 />
             </div>
         </motion.div>

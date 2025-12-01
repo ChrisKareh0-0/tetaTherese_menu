@@ -99,6 +99,28 @@ function App() {
               ))}
             </div>
 
+            {/* Info Section */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 1 }}
+              className="mt-12 text-center space-y-4"
+            >
+              <div className="space-y-1">
+                <h3 className="text-brand-light font-bold text-sm uppercase tracking-wider">Delivery Areas</h3>
+                <p className="text-white/80 text-sm font-light leading-relaxed max-w-xs mx-auto">
+                  Halat, Fidar, Jbeil, Mastita, Blat, Hboub, Amchit
+                </p>
+              </div>
+
+              <div className="space-y-1">
+                <h3 className="text-brand-light font-bold text-sm uppercase tracking-wider">Operating Hours</h3>
+                <p className="text-white/80 text-sm font-light">
+                  9:00 AM - 5:00 PM
+                </p>
+              </div>
+            </motion.div>
+
             <motion.footer
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
