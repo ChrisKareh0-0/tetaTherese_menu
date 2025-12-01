@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 
 const PdfMenuViewer = ({ onBack }) => {
+    const [isIOS, setIsIOS] = useState(false);
+
+    useEffect(() => {
+        const checkIsIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        setIsIOS(checkIsIOS);
+    }, []);
+
+    // iOS: Show toolbar (remove hiding params), view=Fit to zoom out
+    // Others: Hide toolbar, view=FitH
+    const pdfUrl = isIOS
+        ? "/menu.pdf#view=Fit"
+        : "/menu.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH";
+
     return (
         <motion.div
             initial={{ opacity: 0, x: '100%' }}
@@ -22,7 +35,7 @@ const PdfMenuViewer = ({ onBack }) => {
             {/* PDF Container */}
             <div className="flex-1 w-full h-full relative bg-white/5 overflow-y-auto -webkit-overflow-scrolling-touch">
                 <iframe
-                    src="/menu.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+                    src={pdfUrl}
                     className="w-full h-full border-none min-h-full"
                     title="Menu PDF"
                     style={{
