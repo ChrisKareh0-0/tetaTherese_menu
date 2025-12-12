@@ -127,7 +127,7 @@ function App() {
               transition={{ delay: 1, duration: 1 }}
               className="absolute bottom-6 text-white/30 text-sm font-light"
             >
-              © 2024 Teta Therese. All rights reserved.
+              © 2025 Teta Therese. All rights reserved.
             </motion.footer>
           </motion.div>
         )}

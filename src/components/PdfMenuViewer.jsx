@@ -39,7 +39,7 @@ const PdfMenuViewer = ({ onBack }) => {
                     className="w-full h-full border-none min-h-full"
                     title="Menu PDF"
                     style={{
-                        minWidth: '100%',
+                        minWidth: '10%',
                         width: '100%',
                         height: '100%'
                     }}
