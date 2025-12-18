@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Utensils, MessageCircle, MapPin, Mail } from 'lucide-react';
+import { Utensils, MessageCircle, Tag } from 'lucide-react';
 import Background from './components/Background';
 import MenuButton from './components/MenuButton';
 import PdfMenuViewer from './components/PdfMenuViewer';
+import OffersStoriesViewer from './components/OffersStoriesViewer';
+import { OFFERS_STORIES } from './data/offers';
 
 function App() {
-  const [view, setView] = useState('home'); // 'home' | 'menu'
+  const [view, setView] = useState('home'); // 'home' | 'menu' | 'offers'
 
   const handleNavigation = (type) => {
     switch (type) {
       case 'menu':
         setView('menu');
+        break;
+      case 'offers':
+        setView('offers');
         break;
       case 'whatsapp':
         window.open('https://wa.me/1234567890', '_blank');
@@ -36,18 +41,18 @@ function App() {
       action: () => handleNavigation('menu')
     },
     {
+      id: 'offers',
+      label: 'Offers',
+      icon: Tag,
+      color: 'bg-brand-light/10 hover:bg-brand-light/20 border-brand-light/20 text-brand-light',
+      action: () => handleNavigation('offers')
+    },
+    {
       id: 'whatsapp',
       label: 'WhatsApp',
       icon: MessageCircle,
       color: 'bg-brand-light/10 hover:bg-brand-light/20 border-brand-light/20 text-brand-light',
       action: () => handleNavigation('whatsapp')
-    },
-    {
-      id: 'email',
-      label: 'Email Us',
-      icon: Mail,
-      color: 'bg-brand-light/10 hover:bg-brand-light/20 border-brand-light/20 text-brand-light',
-      action: () => handleNavigation('email')
     },
   ];
 
@@ -136,6 +141,16 @@ function App() {
       <AnimatePresence>
         {view === 'menu' && (
           <PdfMenuViewer key="pdf-viewer" onBack={() => setView('home')} />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {view === 'offers' && (
+          <OffersStoriesViewer
+            key="offers-viewer"
+            stories={OFFERS_STORIES}
+            onBack={() => setView('home')}
+          />
         )}
       </AnimatePresence>
     </div>

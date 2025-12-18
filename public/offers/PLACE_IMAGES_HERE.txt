@@ -1,0 +1,2 @@
+Drop your offer images in this folder (e.g., offer-1.jpg, offer-2.jpg, offer-3.jpg)
+Then update src/data/offers.js to match the filenames.
